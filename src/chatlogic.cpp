@@ -5,7 +5,6 @@
 #include <iterator>
 #include <tuple>
 #include <algorithm>
-#include <memory>
 
 #include "graphedge.h"
 #include "graphnode.h"
@@ -130,16 +129,14 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                         ////
 
                         // check if node with this ID exists already
-                        //auto newNode = std::find_if(_nodes.begin(), _nodes.end(), [&id](GraphNode *node) { return node->GetID() == id; });
                         auto newNode = std::find_if(_nodes.begin(), _nodes.end(), [&id](const std::unique_ptr<GraphNode>& node) { return node->GetID() == id; });
 
                         // create new element if ID does not yet exist
                         if (newNode == _nodes.end()) 
                         {
-                            //_nodes.emplace_back(new GraphNode(id));
                             _nodes.emplace_back(std::make_unique<GraphNode>(id));
-                            //newNode = _nodes.end() - 1; // get iterator to last element
-                            newNode = std::prev(_nodes.end());  //_nodes.back();
+                            newNode = _nodes.end() - 1; // get iterator to last element
+                            //newNode = std::prev(_nodes.end());
 
                             // add all answers to current node
                             AddAllTokensToElement("ANSWER", tokens, **newNode);
@@ -203,18 +200,15 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
     ////
 
     // identify root node
-    //GraphNode *rootNode = nullptr;
-  /*
-    std::unique_ptr<GraphNode> rootNode;
+    GraphNode *rootNode = nullptr;
     for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
     {
         // search for nodes which have no incoming edges
         if ((*it)->GetNumberOfParents() == 0)
         {
-
             if (rootNode == nullptr)
             {
-                rootNode = std::move(*it); // assign current node to root
+                rootNode = it->get(); // assign current node to root
             }
             else
             {
@@ -222,25 +216,9 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
             }
         }
     }
-*/
-	std::unique_ptr<GraphNode> rootNode;
-	for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
-	{
-    	if ((*it)->GetNumberOfParents() == 0)
-    	{
-        	if (rootNode == nullptr)
-        	{
-            	rootNode = std::move(*it); // move ownership to rootNode
-        	}
-        	else
-        	{
-            	std::cout << "ERROR: Multiple root nodes detected" << std::endl;
-        	}
-    	}
-	}
 
     // add chatbot to graph root node
-    _chatBot->SetRootNode(rootNode.get());
+    _chatBot->SetRootNode(rootNode);
     rootNode->MoveChatbotHere(_chatBot);
     
     ////
