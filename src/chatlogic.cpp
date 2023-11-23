@@ -27,6 +27,7 @@ ChatLogic::ChatLogic()
     //// EOF STUDENT CODE
 }
 
+/*
 ChatLogic::~ChatLogic()
 {
     //// STUDENT CODE
@@ -36,22 +37,23 @@ ChatLogic::~ChatLogic()
     // delete _chatBot;
 
     // delete all nodes
-  /*
+  
     for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
     {
         delete *it;
     }
-  */
-  /*
+  
+  
     // delete all edges
     for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
     {
         delete *it;
     }
-  */
+  
     ////
     //// EOF STUDENT CODE
 }
+*/
 
 template <typename T>
 void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T &element)
