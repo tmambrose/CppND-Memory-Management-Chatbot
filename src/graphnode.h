@@ -16,8 +16,7 @@ private:
     //// STUDENT CODE
     ////
 
-    // data handles (owned)
-    // std::vector<GraphEdge *> _childEdges;  
+    // data handles (owned) 
     std::vector<std::unique_ptr<GraphEdge>> _childEdges; // edges to subsequent nodes
 
     // data handles (not owned)
