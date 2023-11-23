@@ -2,11 +2,6 @@
 #define CHATGUI_H_
 
 #include <wx/wx.h>
-#include <memory>
-
-using std::unique_ptr;
-using std::move;
-using std::make_unique;
 
 class ChatLogic; // forward declaration
 
@@ -18,7 +13,13 @@ private:
     wxBoxSizer *_dialogSizer;
     wxBitmap _image;
 
-    unique_ptr<ChatLogic> _chatLogic;
+    //// STUDENT CODE
+    ////
+
+    std::unique_ptr<ChatLogic> _chatLogic;
+
+    ////
+    //// EOF STUDENT CODE
 
 public:
     // constructor / destructor
