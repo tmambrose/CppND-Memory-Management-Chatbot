@@ -40,6 +40,7 @@ ChatBot::~ChatBot()
         delete _image;
         _image = NULL;
     }
+    std::cout << "End ChatBot Destructor" << std::endl;
 }
 
 //// STUDENT CODE
