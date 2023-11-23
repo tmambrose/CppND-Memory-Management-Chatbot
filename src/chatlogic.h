@@ -40,7 +40,7 @@ private:
 public:
     // constructor / destructor
     ChatLogic();
-    // ~ChatLogic();
+    ~ChatLogic();
 
     // getter / setter
     void SetPanelDialogHandle(ChatBotPanelDialog *panelDialog);
