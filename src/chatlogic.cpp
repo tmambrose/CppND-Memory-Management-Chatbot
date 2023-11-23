@@ -219,7 +219,6 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
     }
     
     // create instance of chatbot
-    // std::unique_ptr<ChatBot> chatBot = std::make_unique<ChatBot>("../images/chatbot.png");
     ChatBot chatBot("../images/chatbot.png");
     
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
