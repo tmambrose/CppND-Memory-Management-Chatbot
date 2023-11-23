@@ -6,6 +6,7 @@ GraphNode::GraphNode(int id)
     _id = id;
 }
 
+/*
 GraphNode::~GraphNode()
 {
     //// STUDENT CODE
@@ -17,6 +18,7 @@ GraphNode::~GraphNode()
     ////
     //// EOF STUDENT CODE
 }
+*/
 
 void GraphNode::AddToken(std::string token)
 {
