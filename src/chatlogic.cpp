@@ -42,13 +42,13 @@ ChatLogic::~ChatLogic()
         delete *it;
     }
   */
-
+  /*
     // delete all edges
     for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
     {
         delete *it;
     }
-
+  */
     ////
     //// EOF STUDENT CODE
 }
