@@ -27,12 +27,12 @@ ChatLogic::ChatLogic()
     //// EOF STUDENT CODE
 }
 
-/*
+
 ChatLogic::~ChatLogic()
 {
     //// STUDENT CODE
     ////
-
+    /*
     // delete chatbot instance
     // delete _chatBot;
 
@@ -49,11 +49,11 @@ ChatLogic::~ChatLogic()
     {
         delete *it;
     }
-  
+    */
     ////
     //// EOF STUDENT CODE
 }
-*/
+
 
 template <typename T>
 void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T &element)
