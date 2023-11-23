@@ -7,15 +7,6 @@
 #include "graphnode.h"
 #include "graphedge.h"
 #include "chatbot.h"
-#include <iostream>
-#include <random>
-#include <algorithm>
-#include <ctime>
-
-#include "chatlogic.h"
-#include "graphnode.h"
-#include "graphedge.h"
-#include "chatbot.h"
 
 // constructor WITHOUT memory allocation
 ChatBot::ChatBot()
@@ -56,8 +47,10 @@ ChatBot::~ChatBot()
 ChatBot& ChatBot::operator=(const ChatBot& other) // assignment operator override
 {
   std::cout << "ChatBot ASSIGNMENT OPERATOR of instance " << &other << " to instance " << this << std::endl;
-  if (this == &other)
+  
+  if (this == &other) {
     return *this;
+  }
   
   if (_image != NULL) {
     delete _image;
@@ -76,6 +69,14 @@ ChatBot& ChatBot::operator=(const ChatBot& other) // assignment operator overrid
 ChatBot::ChatBot(const ChatBot& other)  // copy constructor
 {
   std::cout << "ChatBot COPY CONSTRUCTOR of instance " << &other << " to instance " << this << std::endl;
+  
+  if (_image != NULL) {
+    delete _image;
+    _image = NULL;
+  }
+  _chatLogic = nullptr;
+  _rootNode = nullptr;  
+    
   _image = new wxBitmap(*other._image);
   _chatLogic = other._chatLogic;
   _rootNode = other._rootNode;
@@ -84,9 +85,11 @@ ChatBot::ChatBot(const ChatBot& other)  // copy constructor
 ChatBot::ChatBot(ChatBot&& other)  // move constructor
 {
   std::cout << "ChatBot MOVE CONSTRUCTOR of instance " << &other << " to instance " << this << std::endl;
-  *_image = *other._image;
-  *_chatLogic = *other._chatLogic;
-  *_rootNode = *other._rootNode;
+  
+  _image = other._image;
+  _chatLogic = other._chatLogic;
+  _rootNode = other._rootNode;
+    
   other._image = NULL;
   other._chatLogic = nullptr;
   other._rootNode = nullptr;
@@ -94,7 +97,8 @@ ChatBot::ChatBot(ChatBot&& other)  // move constructor
 
 ChatBot& ChatBot::operator=(ChatBot&& other) // move assignment operator
 {
-std::cout << "ChatBot MOVE ASSIGNMENT OPERATOR of instance " << &other << " to instance " << this << std::endl;
+  std::cout << "ChatBot MOVE ASSIGNMENT OPERATOR of instance " << &other << " to instance " << this << std::endl;
+  
   if (this == &other)
     return *this;
   
@@ -105,9 +109,13 @@ std::cout << "ChatBot MOVE ASSIGNMENT OPERATOR of instance " << &other << " to i
   _chatLogic = nullptr;
   _rootNode = nullptr;
   
-  *_image = *other._image;
-  *_chatLogic = *other._chatLogic;
-  *_rootNode = *other._rootNode;
+  _image = other._image;
+  _chatLogic = other._chatLogic;
+  _rootNode = other._rootNode;
+
+  other._image = NULL;
+  other._chatLogic = nullptr;
+  other._rootNode = nullptr;
   
   return *this;
 }
