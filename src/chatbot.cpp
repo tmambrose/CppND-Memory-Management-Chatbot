@@ -46,7 +46,7 @@ ChatBot::~ChatBot()
 ////
 ChatBot& ChatBot::operator=(const ChatBot& other) // assignment operator override
 {
-  std::cout << "ChatBot ASSIGNMENT OPERATOR of instance " << &other << " to instance " << this << std::endl;
+  std::cout << "ChatBot ASSIGNMENT OPERATOR << std::endl;
   
   if (this == &other) {
     return *this;
@@ -68,7 +68,7 @@ ChatBot& ChatBot::operator=(const ChatBot& other) // assignment operator overrid
 
 ChatBot::ChatBot(const ChatBot& other)  // copy constructor
 {
-  std::cout << "ChatBot COPY CONSTRUCTOR of instance " << &other << " to instance " << this << std::endl;
+  std::cout << "ChatBot COPY CONSTRUCTOR << std::endl;
   
   if (_image != NULL) {
     delete _image;
@@ -84,7 +84,7 @@ ChatBot::ChatBot(const ChatBot& other)  // copy constructor
 
 ChatBot::ChatBot(ChatBot&& other)  // move constructor
 {
-  std::cout << "ChatBot MOVE CONSTRUCTOR of instance " << &other << " to instance " << this << std::endl;
+  std::cout << "ChatBot MOVE CONSTRUCTOR << std::endl;
   
   _image = other._image;
   _chatLogic = other._chatLogic;
@@ -97,7 +97,7 @@ ChatBot::ChatBot(ChatBot&& other)  // move constructor
 
 ChatBot& ChatBot::operator=(ChatBot&& other) // move assignment operator
 {
-  std::cout << "ChatBot MOVE ASSIGNMENT OPERATOR of instance " << &other << " to instance " << this << std::endl;
+  std::cout << "ChatBot MOVE ASSIGNMENT OPERATOR << std::endl;
   
   if (this == &other)
     return *this;
