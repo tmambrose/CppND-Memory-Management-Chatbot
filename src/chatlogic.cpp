@@ -19,7 +19,6 @@ ChatLogic::ChatLogic()
 
     // create instance of chatbot
     // _chatBot = new ChatBot("../images/chatbot.png");
-    ChatBot _chatBot{};
 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
     // _chatBot->SetChatLogicHandle(this);
