@@ -219,12 +219,12 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
     }
     
     // create instance of chatbot
-    _chatBot = ChatBot("../images/chatbot.png");
+    ChatBot chatBot("../images/chatbot.png");
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    _chatBot->SetChatLogicHandle(this);
+    chatBot->SetChatLogicHandle(this);
     
     // add chatbot to graph root node
-    _chatBot->SetRootNode(rootNode);
+    chatBot->SetRootNode(rootNode);
     rootNode->MoveChatbotHere(std::move(_chatBot));
     
     ////
